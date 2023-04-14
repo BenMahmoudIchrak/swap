@@ -14,44 +14,25 @@ class Commande
      
     private ?int $idCommande = null ;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nbr_produit", type="integer", nullable=false)
-     */
-    private $nbrProduit;
+    #[ORM\Column]
+    private ?int $nbrProduit;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_commande", type="date", nullable=false)
-     */
-    private $dateCommande;
+    #[ORM\Column(type: "date")]
+     private ?\DateTimeInterface $dateCommande;
 
     
-     #[ORM\Column] 
-     
+    #[ORM\Column]
     private ?float $total = null ;
 
-    /**
-     * @var \Pointderelais
-     *
-     * @ORM\ManyToOne(targetEntity="Pointderelais")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fk_id_pointderelais", referencedColumnName="id_pointderelais")
-     * })
-     */
-    private $fkIdPointderelais;
+    #[ORM\ManyToOne(targetEntity: Pointderelais::class, inversedBy: 'Commande')]
+    #[ORM\JoinColumn(name: 'fk_id_pointderelais', referencedColumnName: 'id_pointderelais')]
+    private ?Pointderelais $fkIdPointderelais=null ;
 
-    /**
-     * @var \Livraison
-     *
-     * @ORM\ManyToOne(targetEntity="Livraison")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fk_id_livraison", referencedColumnName="id_livraison")
-     * })
-     */
-    private $fkIdLivraison;
+    #[ORM\ManyToOne(targetEntity: Livraison::class, inversedBy: 'Commande')]
+    #[ORM\JoinColumn(name: 'fk_id_livraison', referencedColumnName: 'id_livraison')]
+    private ?Livraison $fkIdLivraison=null ;
+
+    
 
     public function getIdCommande(): ?int
     {

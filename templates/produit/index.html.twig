@@ -24,6 +24,7 @@
                 <td>
                     <a href="{{ path('app_produit_show', {'idProduit': produit.idProduit}) }}">show</a>
                     <a href="{{ path('app_produit_edit', {'idProduit': produit.idProduit}) }}">edit</a>
+                    <a href="{{ path('app_commande_edit', {'idProduit': produit.idProduit}) }}">commander</a>
                 </td>
             </tr>
         {% else %}
