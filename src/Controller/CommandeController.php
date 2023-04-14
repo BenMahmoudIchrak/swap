@@ -21,7 +21,7 @@ class CommandeController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_commande_new', methods: ['GET', 'POST'])]
+    #[Route('/{idCommande}/new', name: 'app_commande_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CommandeRepository $commandeRepository): Response
     {
         $commande = new Commande();
