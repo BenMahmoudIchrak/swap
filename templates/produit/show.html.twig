@@ -2,13 +2,10 @@
 {% block body %}
  <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <ol>
           <li><a href="index.html">Acceuil</a></li>
           <li>Produit Details</li>
         </ol>
-        
-
       </div>
     </section>
 <div class="container">
@@ -32,16 +29,13 @@
             </div>
             <div class="portfolio-description">
               <h2>Les détails de produit</h2>
-              <p>
-{{ produit.descriptionProduit }}              </p>
+              <p>{{ produit.descriptionProduit }}  </p>
             </div>
           </div>
 
         </div>
 
       </div>
- 
-
     <a href="{{ path('app_produit_index') }}">back to list</a>
 
     <a href="{{ path('app_produit_edit', {'idProduit': produit.idProduit}) }}">edit</a>
