@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Edit Produit</h1>
 
-     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
         {{ form_start(form ,{'attr': {'class' : 'needs-validation','novalidate': true,'id' : 'form'}}) }}
         <div class="row">
             <div class="form-group col-md-6">
@@ -28,13 +28,8 @@
             {{ form_errors(form.descriptionProduit) }}
         </div>
               
-        </div>
-        </div>
-        </div>
-
-    
         {{ form_end(form) }} 
         
         <a href="{{ path('app_produit_index') }}">back to list</a>
-     </div>
+    </div>
 {% endblock %}
