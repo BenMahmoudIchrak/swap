@@ -99,5 +99,19 @@ class Commande
         return $this;
     }
 
+    
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
 
 }
