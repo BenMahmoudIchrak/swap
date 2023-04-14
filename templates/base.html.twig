@@ -84,8 +84,8 @@
 
             <li class="dropdown"><a href="#"><span>Service</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#">Echange</a></li>
-                <li><a href="#">Produit</a></li>
+                <li><a href="{{path('app_echange_index')}}">Echange</a></li>
+                <li><a href="{{path('app_produit_index')}}">Produit</a></li>
                
               </ul>
             </li>
@@ -134,21 +134,21 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Consulter</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Acceuil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{asset('index.html')}}">Acceuil</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">A propos</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Produits </a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services </a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Echange</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_produit_index')}}">Produits </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_services_index')}}">Services </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_echange_index')}}">Echange</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Consulter</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Produits</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Réclamation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Livraison</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Compte</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_produit_index')}}">Produits</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_reclamation_index')}}">Réclamation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_livraison_index')}}">Livraison</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{path('app_compte_index')}}">Compte</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
             </ul>
           </div>
