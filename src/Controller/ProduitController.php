@@ -10,10 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/produit')]
+
 class ProduitController extends AbstractController
 {
-    #[Route('/', name: 'app_produit_index', methods: ['GET'])]
+
+    #[Route('/', name: 'app_index', methods: ['GET'])]
+    public function home(ProduitRepository $produitRepository): Response
+    {
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produitRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/produit/all', name: 'app_produit_index', methods: ['GET'])]
     public function index(ProduitRepository $produitRepository): Response
     {
         return $this->render('produit/index.html.twig', [
@@ -21,7 +30,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
+    #[Route('/produit/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository): Response
     {
         $produit = new Produit();
@@ -54,7 +63,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/{idProduit}', name: 'app_produit_show', methods: ['GET'])]
+    #[Route('/produit/{idProduit}', name: 'app_produit_show', methods: ['GET'])]
     public function show(Produit $produit): Response
     {
         return $this->render('produit/show.html.twig', [
@@ -62,9 +71,16 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/{idProduit}/edit', name: 'app_produit_edit', methods: ['GET', 'POST'])]
+    #[Route('/produit/{idProduit}/edit', name: 'app_produit_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
     {
+        // Récupérer l'ID du produit depuis la route
+        $idProduit = $request->attributes->get('idProduit');
+
+        // Utiliser l'ID du produit pour trouver le produit correspondant dans la base de données
+        $produit = $this->getDoctrine()
+        ->getRepository(Produit::class)
+        ->find($idProduit);
         $produit=new Produit;
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
@@ -95,7 +111,7 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/{idProduit}', name: 'app_produit_delete', methods: ['POST'])]
+    #[Route('/produit/{idProduit}', name: 'app_produit_delete', methods: ['POST'])]
     public function delete(Request $request, Produit $produit, ProduitRepository $produitRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getIdProduit(), $request->request->get('_token'))) {
